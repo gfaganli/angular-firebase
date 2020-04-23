@@ -1,0 +1,28 @@
+<div class="login">
+  <mat-card>
+    <mat-card-title>
+      <mat-icon class="profile_icon">account_circle</mat-icon>
+    </mat-card-title>
+    <mat-card-content>
+      <form [formGroup]="loginForm">
+        <div class="username">
+          <mat-form-field appearance="outline">
+            <input type="text" matInput placeholder="Phone" formControlName="phone" [readonly]="show">
+          </mat-form-field>
+        </div>
+        <div class="password" *ngIf="show">
+          <mat-form-field appearance="outline">
+            <input type="password" matInput placeholder="Verification code" formControlName="password">
+          </mat-form-field>
+        </div>
+        <div *ngIf="!show" id="recaptcha-container"></div>
+        <div class="submit" *ngIf="!show">
+          <button mat-raised-button color="primary" (click)="login()">Login</button>
+        </div>
+        <div class="submit" *ngIf="show">
+          <button mat-raised-button color="accent" (click)="confirmCode()">Confirm</button>
+        </div>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>
